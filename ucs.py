@@ -9,34 +9,27 @@ import pygame
 import heapq
 
 def ucs(screen, start, items_to_coll, delivery, obstacles):
-    
     target_items = frozenset(items_to_coll) 
-    initial_coll = frozenset() 
-    
+    initial_coll = frozenset() #initial collected items 
     counter = 0
     pq = [(0, counter, start, initial_coll, [start])]
-    
-    exp_set = set()
+    exp_set = set() # explored set
     dir = [(-1, 0), (1, 0), (0, -1), (0, 1)] 
 
     while pq:
         create_grid.handle_pygame_events()
-
         cost, _, curr_pos, coll, curr_path = heapq.heappop(pq)
-
-        if curr_pos == delivery and coll == target_items:
+        if curr_pos == delivery and coll == target_items: #coll --> collected items
             return curr_path 
 
         state = (curr_pos, coll)
-
         if state not in exp_set:
             exp_set.add(state)
             
+            #pygame animation updation
             create_grid.draw_grid_base(screen, start, items_to_coll, delivery, obstacles, {s[0] for s in exp_set}, [(item[2], None) for item in pq])
-            
             if len(curr_path) > 1:
                 create_grid.draw_lines(screen, curr_path)
-            
             pygame.display.flip()
             create_grid.CLOCK.tick(create_grid.FPS)
             
@@ -46,10 +39,8 @@ def ucs(screen, start, items_to_coll, delivery, obstacles):
 
             for dx, dy in dir:
                 nx, ny = curr_pos[0] + dx, curr_pos[1] + dy
-                
                 if 0 <= nx < create_grid.GRID_SIZE and 0 <= ny < create_grid.GRID_SIZE and (nx, ny) not in obstacles:
                     next_state = ((nx, ny), next_coll)
-                    
                     if next_state not in exp_set:
                         counter += 1
                         step_cost = 1
@@ -79,7 +70,7 @@ def main():
             "start": (0, 0),
             "items": [(2, 7), (8, 2), (4, 6)],
             "delivery": (9, 9),
-            # Complex barriers: L-shapes and dead ends
+            # L-shapes and dead end barriers
             "obstacles": [(x, 5) for x in range(2, 10)] + [(5, y) for y in range(0, 4)] + [(2, 8), (3, 8), (4, 8)]
         }
     ]
@@ -91,26 +82,12 @@ def main():
         delivery_loc = tc["delivery"]
         obstacles = tc["obstacles"]
 
-        final_path = ucs(
-            create_grid.SCREEN, 
-            robot_start, 
-            items, 
-            delivery_loc, 
-            obstacles
-        )
+        final_path = ucs(create_grid.SCREEN, robot_start, items, delivery_loc, obstacles)
         
+        #drawing final path
         if final_path:
-            print(f"[{difficulty}] Optimal route found: {len(final_path)-1} total steps.")
-            
-            create_grid.draw_grid_base(
-                create_grid.SCREEN, 
-                robot_start, 
-                items, 
-                delivery_loc, 
-                obstacles, 
-                set(), 
-                []
-            ) 
+
+            create_grid.draw_grid_base(create_grid.SCREEN, robot_start, items, delivery_loc, obstacles, set(), []) 
             create_grid.draw_lines(create_grid.SCREEN, final_path)
             
             font = pygame.font.SysFont(None, 28)
@@ -126,14 +103,12 @@ def main():
             pygame.display.flip()
             
         else:
-            print(f"[{difficulty}] Route not found")
             pygame.display.set_caption(f"{difficulty} FAILED: Target is unreachable.")
 
         if index < len(test_cases) - 1:
             pygame.time.wait(5000)
 
     pygame.display.set_caption("All Test Cases Completed.")
-    print("All missions completed.")
     
     while True:
         create_grid.handle_pygame_events()

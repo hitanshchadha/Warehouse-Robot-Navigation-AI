@@ -102,17 +102,7 @@ def main():
         final_path = bfs(create_grid.SCREEN, robot_start, item_loc, del_loc, obstacles)
         
         if final_path:
-            create_grid.draw_grid_base(create_grid.SCREEN, robot_start, [item_loc], del_loc, obstacles, set(), []) 
-            create_grid.draw_lines(create_grid.SCREEN, final_path)
-
-            font = pygame.font.SysFont(None, 28)
-            info_text = f" {difficulty} Case Optimal Path: {len(final_path)-1} steps "
-            text_surface = font.render(info_text, True, (255, 255, 255), (0, 0, 0))
-            
-            screen_rect = create_grid.SCREEN.get_rect()
-            text_rect = text_surface.get_rect(midbottom=(screen_rect.centerx, screen_rect.bottom - 10))
-            
-            create_grid.SCREEN.blit(text_surface, text_rect)
+            create_grid.draw_final_path(difficulty, final_path, robot_start,item_loc, del_loc, obstacles)
             
             pygame.display.set_caption(f"{difficulty} Completed | Optimal Path: {len(final_path)-1} steps.")
             pygame.display.flip()
