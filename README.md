@@ -9,11 +9,11 @@
 
 ## Team Members
 
-| Name | ID |
-|------|----|
-| Hitansh Chadha | 2022A8PS1255P |
-| Vedant Mathur | 2022A3PS0375P |
-| Krishna Raghunath | 2023A1PS0213P |
+| Name | BITS ID | Gitub ID |
+|------|----|---------- |
+| Hitansh Chadha | 2022A8PS1255P | hitanshchadha |
+| Vedant Mathur | 2022A3PS0375P | ved-eager |
+| Krishna Raghunath | 2023A1PS0213P | f20230213-matrix |
 
 ---
 
