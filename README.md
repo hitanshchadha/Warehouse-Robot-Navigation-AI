@@ -1,14 +1,13 @@
 # Warehouse-Robot-Navigation-AI
-# 🤖 Intelligent Warehouse Robot Navigation
+# Intelligent Warehouse Robot Navigation
 **CS F407 – Artificial Intelligence | Group Assignment (D3 Implementation)**  
 
 **Group Number:** 22  
-**Project:** Project 1 – Intelligent Warehouse Robot Navigation  
-**Institution:** BITS Pilani  
+**Project:** Intelligent Warehouse Robot Navigation    
 
 ---
 
-## 👥 Team Members
+## Team Members
 
 | Name | ID |
 |------|----|
@@ -18,18 +17,21 @@
 
 ---
 
-## 📌 Project Overview
+## Setup Instructions
+### Install pygame using the command:
+`pip install pygame`
+then run `main.py` file
+
+---
+## Project Overview
 
 This project focuses on designing and implementing an **intelligent search-based agent** for autonomous navigation in a warehouse environment. The robot must navigate a grid-based warehouse, collect items, manage energy constraints, and reach delivery points while avoiding static obstacles.
-
-The work is carried out as part of the **CS F407: Artificial Intelligence** course and follows the official **four-stage assignment structure (D1–D4)**.
-
-✅ **Current Stage Completed:** D3 – Implementation + Demo  
-✅ **Complexity Level Achieved:** L3  
+ 
+**Complexity Level Implemented:** L3  
 
 ---
 
-## 🧠 Problem Description
+## Problem Description
 
 The warehouse is modeled as a **fully observable, deterministic, static, discrete, single-agent environment**.
 
@@ -41,7 +43,7 @@ The warehouse is modeled as a **fully observable, deterministic, static, discret
 ### State Representation
 ---
 
-## 🚀 Implemented Complexity Levels
+## Implemented Complexity Levels
 
 | Level | Description | Algorithm(s) Used |
 |------|------------|------------------|
@@ -51,11 +53,11 @@ The warehouse is modeled as a **fully observable, deterministic, static, discret
 
 ---
 
-## 🔍 Algorithms Implemented
+## Algorithms Implemented
 
 In accordance with **D2 (Algorithm Analysis)** and **D3 (Implementation)** requirements, the following algorithms were implemented from scratch.
 
-### ✅ Uninformed Search Algorithms
+### Uninformed Search Algorithms
 
 #### 1. Breadth-First Search (BFS)
 - Used in **L1**
@@ -69,7 +71,7 @@ In accordance with **D2 (Algorithm Analysis)** and **D3 (Implementation)** requi
 
 ---
 
-### ✅ Informed Search Algorithms
+### Informed Search Algorithms
 
 #### 3. A* Search
 - Used in **L3**
@@ -83,28 +85,28 @@ In accordance with **D2 (Algorithm Analysis)** and **D3 (Implementation)** requi
 
 ---
 
-## 📐 Heuristics (Designed in D1)
+## Heuristics (Designed in D1)
 
 Two admissible and consistent heuristics were formally designed and proved in **D1**, then implemented in **D3**.
 
 ### 1️⃣ Manhattan Distance Heuristic (for A*)
 
 h(n) = |x₁ − x₂| + |y₁ − y₂|
-- Admissible ✅
-- Consistent ✅
+- Admissible 
+- Consistent 
 - Suitable for grid-based movement with four-directional actions
 
 ### 2️⃣ Minimum Spanning Tree (MST) Heuristic (for IDA*)
 
 h(n) = Cost of MST over remaining uncollected items
 - Models a relaxed version of the problem
-- Admissible ✅
-- Consistent ✅
+- Admissible 
+- Consistent 
 - More informed for multi-item collection tasks
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 
 Grid Input
@@ -120,24 +122,10 @@ Visualization Layer
 
 - Implemented in **Python 3**
 - Modular search engine design
-- Visualization using **Pygame / Matplotlib**
+- Visualization using **Pygame**
 - Easy comparison of algorithms and heuristics
 
 ---
 
-## 🧪 Visualization & Demo
 
-The system provides step-by-step visualization of:
-- Robot movement
-- Node expansion patterns
-- Path optimality
-
-The demo video demonstrates:
-- L1, L2, and L3 scenarios
-- Comparison of uninformed vs informed search
-- Impact of heuristics and energy constraints
-
-📹 **Demo video is included as part of the D3 submission**
-
----
 
